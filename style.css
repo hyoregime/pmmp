@@ -1,0 +1,69 @@
+*{box-sizing:border-box}
+:root{
+  --bg:#f3f3f3;--panel:#fff;--line:#ddd;--text:#171717;--muted:#777;
+}
+html,body{margin:0;background:var(--bg);color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",
+  "Malgun Gothic",sans-serif}
+button{border:1px solid #d5d5d5;background:#fff;border-radius:8px;padding:9px 13px;
+  font-weight:700;cursor:pointer}
+button:hover{background:#f0f0f0}
+button.dark{background:#171717;color:#fff;border-color:#171717}
+.toolbar{
+  position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;
+  align-items:center;gap:18px;padding:14px 20px;background:rgba(255,255,255,.96);
+  border-bottom:1px solid var(--line);backdrop-filter:blur(10px)
+}
+.brand{display:flex;align-items:baseline;gap:12px}
+.brand strong{font-size:17px}.brand span{font-size:12px;color:var(--muted)}
+.toolbar-actions{display:flex;gap:7px}
+main{max-width:1080px;margin:0 auto;padding:28px 18px 50px}
+.workspace{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px}
+.canvas-shell{display:flex;justify-content:center}
+.artboard{
+  width:min(900px,100%);background:#fff;padding:34px 44px 46px;
+  overflow:hidden
+}
+.overall-title{
+  text-align:center;font-size:28px;font-weight:800;line-height:1.2;
+  min-height:34px;outline:none;margin-bottom:26px
+}
+.overall-title:focus,.card-title:focus,.card-desc:focus{
+  background:#f4f4f4;border-radius:4px
+}
+.grid{display:grid;grid-template-columns:1fr 1fr;column-gap:34px;row-gap:34px}
+.card{min-width:0}
+.photo{
+  position:relative;width:100%;aspect-ratio:1/1;border-radius:18px;overflow:hidden;
+  background:#eee;cursor:grab;touch-action:none
+}
+.photo.dragging{cursor:grabbing}
+.photo img{
+  position:absolute;width:100%;height:100%;object-fit:cover;display:block;
+  user-select:none;pointer-events:none;transform-origin:center
+}
+.photo-tip{
+  position:absolute;right:9px;bottom:9px;padding:7px 9px;border-radius:7px;
+  background:rgba(0,0,0,.65);color:#fff;font-size:11px;opacity:0;
+  transition:opacity .15s;pointer-events:none
+}
+.photo:hover .photo-tip{opacity:1}
+.file{display:none}
+.text-area{padding:12px 2px 0}
+.card-title{
+  font-size:17px;font-weight:800;line-height:1.35;outline:none;min-height:23px
+}
+.card-desc{
+  margin-top:4px;font-size:13px;line-height:1.55;color:#4c4c4c;
+  outline:none;min-height:22px
+}
+.hint{margin:13px 3px 0;color:#777;font-size:12px;line-height:1.7;text-align:center}
+@media(max-width:700px){
+  .toolbar{align-items:flex-start;flex-direction:column;padding:12px}
+  .brand{display:block}.brand span{display:block;margin-top:3px}
+  .toolbar-actions{width:100%}.toolbar-actions button{flex:1}
+  main{padding:10px 7px 30px}.workspace{padding:8px;border-radius:12px}
+  .artboard{padding:22px 16px 28px}.overall-title{font-size:22px;margin-bottom:18px}
+  .grid{gap:20px 13px}.card-title{font-size:14px}.card-desc{font-size:11px}
+  .photo{border-radius:12px}
+}

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>4분할 이미지 편집기</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="toolbar">
+  <div class="brand">
+    <strong>4분할 이미지 편집기</strong>
+    <span>사진을 바꾸고, 결과물 위의 글자를 바로 눌러 수정하세요.</span>
+  </div>
+  <div class="toolbar-actions">
+    <button id="resetBtn">초기화</button>
+    <button id="downloadJpg">JPG 저장</button>
+    <button id="downloadPng" class="dark">PNG 저장</button>
+  </div>
+</header>
+
+<main>
+  <section class="workspace">
+    <div class="canvas-shell">
+      <div id="artboard" class="artboard">
+        <div class="overall-title" contenteditable="true" spellcheck="false">주제</div>
+        <div id="grid" class="grid"></div>
+      </div>
+    </div>
+    <p class="hint">
+      사진: 클릭해서 교체 · 사진 위에서 드래그하면 위치 이동 · 휠/핀치로 확대·축소<br>
+      글자: 결과물 위에서 바로 클릭하여 수정
+    </p>
+  </section>
+</main>
+
+<template id="cardTemplate">
+  <article class="card">
+    <div class="photo">
+      <img draggable="false">
+      <div class="photo-tip">사진 교체</div>
+      <input class="file" type="file" accept="image/*">
+    </div>
+    <div class="text-area">
+      <div class="card-title" contenteditable="true" spellcheck="false"></div>
+      <div class="card-desc" contenteditable="true" spellcheck="false"></div>
+    </div>
+  </article>
+</template>
+
+<script src="app.js"></script>
+</body>
+</html>
